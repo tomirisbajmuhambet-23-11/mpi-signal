@@ -1459,3 +1459,1271 @@ input:focus {
         font-size: 17px;
     }
 }
+/* =========================================
+   MPI SIGNAL PRO — FUTURISTIC SPACE 3D
+   ========================================= */
+
+:root {
+    --ink: #f1f7ff;
+    --muted: #9eb4d2;
+    --line: #284265;
+    --accent: #42d9ff;
+    --dark: #07101f;
+    --pulse: #36ffbc;
+    --plane: #030814;
+    --white: #101e32;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(
+            ellipse at 15% 20%,
+            #12396880,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 85% 40%,
+            #124d5b50,
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            #20275c60,
+            transparent 50%
+        ),
+        #030814;
+
+    background-attachment: fixed;
+    overflow-x: hidden;
+    isolation: isolate;
+}
+
+/* Қозғалатын ғарыштық фон */
+
+#spaceBackground {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            #42d9ff08 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            #42d9ff08 1px,
+            transparent 1px
+        );
+
+    background-size: 65px 65px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Жоғарғы мәзір */
+
+.masthead {
+    background: #07101fbb;
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid #42d9ff25;
+    box-shadow: 0 5px 40px #0005;
+}
+
+.brand {
+    letter-spacing: 1px;
+}
+
+.brand-mark {
+    background: linear-gradient(
+        145deg,
+        #42d9ff,
+        #137ba5
+    );
+
+    border: 1px solid #a1f1ff;
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 25px #42d9ff50,
+        inset 0 2px 4px #ffffff60;
+}
+
+/* Басты бет */
+
+.hero {
+    position: relative;
+    min-height: 500px;
+    border-radius: 30px;
+    border: 1px solid #42d9ff35;
+
+    background: linear-gradient(
+        125deg,
+        #101e32d9,
+        #071322a0
+    );
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 30px 80px #0006,
+        inset 0 1px 0 #ffffff20;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #42d9ff0b,
+        transparent
+    );
+
+    transform: skewX(-25deg);
+    animation: heroScan 9s infinite;
+    pointer-events: none;
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 span {
+    background: linear-gradient(
+        90deg,
+        #42d9ff,
+        #36ffbc,
+        #92b5ff
+    );
+
+    background-size: 200%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientFlow 5s linear infinite;
+}
+
+.hero p {
+    color: #a9bdd8;
+}
+
+/* 3D процессор сахнасы */
+
+.chip-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    min-height: 390px;
+    perspective: 1100px;
+    overflow: hidden;
+
+    border-radius: 24px;
+    border: 1px solid #42d9ff30;
+
+    background: radial-gradient(
+        ellipse at center,
+        #12344b,
+        #050d1c 70%
+    );
+}
+
+.chip-platform {
+    position: relative;
+
+    width: 225px;
+    height: 225px;
+
+    transform-style: preserve-3d;
+
+    transform:
+        rotateX(55deg)
+        rotateZ(-35deg);
+
+    animation: chipFloat 6s ease-in-out infinite;
+}
+
+.chip-board {
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 19px,
+            #42d9ff35 20px 21px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 19px,
+            #42d9ff35 20px 21px
+        ),
+        #102a40;
+
+    border: 2px solid #42d9ff80;
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 0 #081727,
+        0 15px 0 #1a4b61,
+        0 30px 65px #0009,
+        0 0 40px #42d9ff30;
+}
+
+.chip-core {
+    position: absolute;
+    inset: 48px;
+
+    transform: translateZ(40px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: linear-gradient(
+        145deg,
+        #4e8ca6,
+        #11263a,
+        #08111e
+    );
+
+    border: 2px solid #83ecff;
+    border-radius: 13px;
+
+    box-shadow:
+        0 0 35px #42d9ff66,
+        0 9px 0 #0b202f,
+        inset 0 0 25px #42d9ff30;
+}
+
+.chip-core strong {
+    color: #baf7ff;
+    font-size: 35px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px #42d9ff;
+}
+
+.chip-core small {
+    color: #36ffbc;
+    font-family: monospace;
+    font-size: 10px;
+}
+
+.chip-pin {
+    position: absolute;
+    width: 22px;
+    height: 9px;
+
+    background: linear-gradient(
+        #a1f1ff,
+        #287c9e
+    );
+
+    box-shadow: 0 0 10px #42d9ff80;
+    border-radius: 2px;
+}
+
+.chip-particle {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+
+    background: #36ffbc;
+
+    box-shadow:
+        0 0 10px #36ffbc,
+        0 0 25px #36ffbc;
+
+    animation: dataPulse 2s infinite;
+}
+
+.chip-caption {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #7adcf4;
+    font: 11px monospace;
+    letter-spacing: 1px;
+}
+
+/* Көлемді статистика */
+
+.metric-grid {
+    perspective: 1200px;
+}
+
+.metric {
+    background: linear-gradient(
+        145deg,
+        #172e46,
+        #0b1627
+    );
+
+    border: 1px solid #42d9ff30;
+    border-radius: 20px;
+
+    box-shadow:
+        0 6px 0 #07101d,
+        0 15px 30px #0004,
+        inset 0 1px 0 #ffffff15;
+
+    transform-style: preserve-3d;
+}
+
+.metric strong {
+    color: #42d9ff;
+    text-shadow: 0 0 15px #42d9ff30;
+}
+
+/* Модуль карточкалары */
+
+.course-route {
+    perspective: 1500px;
+    gap: 16px;
+}
+
+.course-stop {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        110deg,
+        #142940,
+        #0b1728
+    );
+
+    border: 1px solid #284265;
+    border-radius: 18px;
+
+    transform-style: preserve-3d;
+
+    box-shadow:
+        0 5px 0 #07101b,
+        0 15px 30px #0003;
+
+    transition:
+        transform .2s,
+        border-color .3s,
+        box-shadow .3s;
+}
+
+.course-stop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        #42d9ff10,
+        transparent
+    );
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.course-stop:hover::before {
+    opacity: 1;
+}
+
+.course-stop:hover {
+    border-color: #42d9ff;
+
+    box-shadow:
+        0 10px 35px #42d9ff18,
+        inset 0 0 20px #42d9ff08;
+}
+
+.stop-number {
+    background: linear-gradient(
+        145deg,
+        #245777,
+        #102b40
+    );
+
+    border: 1px solid #42d9ff60;
+    box-shadow: 0 4px 0 #091827;
+
+    transform: translateZ(20px);
+}
+
+/* Теория және практикалық бөлім */
+
+.sheet,
+.bench,
+.theory-card,
+.exercise-rail,
+.search-box {
+    background: linear-gradient(
+        145deg,
+        #122339d9,
+        #0a1424e6
+    );
+
+    backdrop-filter: blur(12px);
+    border-color: #284265;
+
+    box-shadow:
+        0 15px 40px #0003,
+        inset 0 1px 0 #ffffff08;
+}
+
+.theory-card {
+    transition: .3s ease;
+}
+
+.theory-card:hover {
+    border-color: #42d9ff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px #42d9ff15;
+}
+
+/* 3D батырмалар */
+
+.primary {
+    background: linear-gradient(
+        145deg,
+        #42d9ff,
+        #2ce5bc
+    );
+
+    color: #041927;
+
+    border: 1px solid #95f5ff;
+
+    box-shadow:
+        0 5px 0 #14899d,
+        0 10px 25px #42d9ff25;
+
+    transition: .25s;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 0 #14899d,
+        0 0 35px #42d9ff50;
+}
+
+.primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #14899d;
+}
+
+/* Төменгі мәзір */
+
+.dock {
+    background: #0c192cda;
+    backdrop-filter: blur(24px);
+
+    border: 1px solid #42d9ff35;
+
+    box-shadow:
+        0 15px 45px #0008,
+        0 0 25px #42d9ff0d;
+}
+
+/* Жаңа ақпараттық панель */
+
+.system-panel {
+    margin: 25px 0 45px;
+    padding: 24px;
+
+    border: 1px solid #42d9ff25;
+    border-radius: 20px;
+
+    background: #0b192bcc;
+    backdrop-filter: blur(18px);
+}
+
+.system-panel h2 {
+    color: #42d9ff;
+}
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.system-item {
+    padding: 18px;
+    background: #13273d;
+    border: 1px solid #284265;
+    border-radius: 12px;
+}
+
+.system-item strong {
+    display: block;
+    color: #36ffbc;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.system-item span {
+    color: #9eb4d2;
+    font-size: 13px;
+}
+
+/* Анимациялар */
+
+@keyframes heroScan {
+    0% {
+        left: -100%;
+    }
+
+    70%, 100% {
+        left: 170%;
+    }
+}
+
+@keyframes gradientFlow {
+    to {
+        background-position: 200%;
+    }
+}
+
+@keyframes chipFloat {
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotateX(55deg)
+            rotateZ(-35deg);
+    }
+
+    50% {
+        transform:
+            translateY(-20px)
+            rotateX(48deg)
+            rotateZ(-25deg);
+    }
+}
+
+@keyframes dataPulse {
+    0%, 100% {
+        opacity: .3;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+@media (max-width: 760px) {
+
+    .hero {
+        min-height: auto;
+    }
+
+    .chip-stage {
+        min-height: 300px;
+    }
+
+    .chip-platform {
+        width: 190px;
+        height: 190px;
+    }
+
+    .chip-core {
+        inset: 40px;
+    }
+
+    .chip-core strong {
+        font-size: 27px;
+    }
+
+    .system-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+/* =========================================
+   MPI SIGNAL — PREMIUM COSMIC GLASS
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --ink: #f8f5ff;
+    --muted: #b9b2c9;
+    --line: #44364e;
+    --accent: #e7bc86;
+    --dark: #15111c;
+    --pulse: #d5b1ff;
+    --plane: #100d16;
+    --white: #211a2b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+
+    background:
+        radial-gradient(
+            ellipse at 15% 15%,
+            #59304d80,
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 85% 25%,
+            #4b365980,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            #72503335,
+            transparent 50%
+        ),
+        #100d16;
+
+    background-attachment: fixed;
+    color: var(--ink);
+}
+
+/* Әдемі кеңістіктік фон */
+
+body::before {
+    background-image:
+        linear-gradient(
+            #e7bc8607 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            #e7bc8607 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    top: -200px;
+    right: -150px;
+
+    background: radial-gradient(
+        circle,
+        #bb8b7840,
+        transparent 70%
+    );
+
+    filter: blur(60px);
+    animation: ambientGlow 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Жазулардың жаңа стилі */
+
+h1, h2, h3 {
+    font-family: 'Montserrat', 'Manrope', sans-serif;
+    letter-spacing: -0.035em;
+}
+
+h1 {
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+h2 {
+    font-weight: 700;
+    color: #f3e6fa;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.85;
+}
+
+.eyebrow,
+.technical-label {
+    font-family: 'Montserrat', sans-serif;
+    color: #e7bc86;
+    letter-spacing: 3px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Жоғарғы мәзір */
+
+.masthead {
+    background: #181220b8;
+    backdrop-filter: blur(30px);
+    border-bottom: 1px solid #e7bc8625;
+    box-shadow: 0 10px 45px #0004;
+}
+
+.brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #e7bc86
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-mark {
+    background: linear-gradient(
+        145deg,
+        #f9deb5,
+        #a77b49
+    );
+
+    border: 1px solid #ffe4be;
+    border-radius: 11px;
+
+    box-shadow:
+        0 0 25px #e7bc8635,
+        inset 0 2px 5px #ffffff60;
+}
+
+.brand-mark i {
+    background: #35263b;
+}
+
+.languages {
+    background: #21192c;
+    border-color: #44364e;
+}
+
+.languages [aria-pressed="true"] {
+    background: #e7bc86;
+    color: #21192c;
+}
+
+/* Басты бет */
+
+.hero {
+    background: linear-gradient(
+        130deg,
+        #302238c9,
+        #1b1525e0,
+        #281d2bd0
+    );
+
+    border: 1px solid #e7bc8635;
+    border-radius: 32px;
+
+    box-shadow:
+        0 30px 90px #0005,
+        inset 0 1px 0 #ffffff16;
+
+    backdrop-filter: blur(22px);
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(36px, 5.4vw, 75px);
+    font-weight: 800;
+    letter-spacing: -3px;
+    color: #f6edf9;
+
+    text-shadow: 0 8px 30px #0004;
+}
+
+.hero h1 span {
+    background: linear-gradient(
+        100deg,
+        #f9e6c8,
+        #d4a76e,
+        #e5c7ff,
+        #f9e6c8
+    );
+
+    background-size: 300%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: luxuryText 7s linear infinite;
+}
+
+.hero p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.9;
+    color: #c4b8d0;
+}
+
+.live-dot {
+    background: #e7bc86;
+    box-shadow: 0 0 16px #e7bc86;
+}
+
+/* 3D процессордың түсін өзгерту */
+
+.chip-stage {
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            #64425b,
+            #261d32 55%,
+            #17111f 85%
+        );
+
+    border-color: #b99b7250;
+    box-shadow:
+        0 20px 60px #0004,
+        inset 0 0 50px #c89fbc10;
+}
+
+.chip-board {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 19px,
+            #e7bc8625 20px 21px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 19px,
+            #e7bc8625 20px 21px
+        ),
+        #392b43;
+
+    border-color: #e7bc86;
+
+    box-shadow:
+        0 12px 0 #17111f,
+        0 15px 0 #846647,
+        0 30px 65px #0008,
+        0 0 40px #e7bc8620;
+}
+
+.chip-core {
+    background: linear-gradient(
+        145deg,
+        #d1b58d,
+        #665171,
+        #2b2035
+    );
+
+    border: 2px solid #f1d5ae;
+
+    box-shadow:
+        0 0 35px #e7bc8640,
+        0 9px 0 #211729,
+        inset 0 0 25px #ffffff20;
+}
+
+.chip-core strong {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff4dc;
+    text-shadow: 0 0 15px #e7bc86;
+}
+
+.chip-core small {
+    color: #f0d9b7;
+}
+
+.chip-pin {
+    background: linear-gradient(
+        #ffe5b7,
+        #a27b50
+    );
+
+    box-shadow: 0 0 10px #e7bc8650;
+}
+
+.chip-particle {
+    background: #e9c6ff;
+    box-shadow:
+        0 0 10px #e9c6ff,
+        0 0 25px #d2a2ef;
+}
+
+.chip-caption {
+    color: #ddc6a7;
+    letter-spacing: 2px;
+}
+
+/* Статистика */
+
+.metric {
+    background: linear-gradient(
+        145deg,
+        #34283f,
+        #201828
+    );
+
+    border: 1px solid #e7bc8625;
+    border-radius: 22px;
+
+    box-shadow:
+        0 6px 0 #130f19,
+        0 16px 35px #0003,
+        inset 0 1px 0 #ffffff10;
+}
+
+.metric strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #edca9a;
+    text-shadow: 0 0 20px #e7bc8620;
+}
+
+.metric span {
+    font-size: 13px;
+    color: #b9b2c9;
+}
+
+.metric:hover {
+    border-color: #e7bc86;
+}
+
+/* Модульдер */
+
+.course-stop {
+    background: linear-gradient(
+        120deg,
+        #31253c,
+        #21192b
+    );
+
+    border-color: #51405a;
+    border-radius: 20px;
+    padding: 23px;
+}
+
+.course-stop h2 {
+    font-size: 20px;
+    font-weight: 650;
+    color: #f6edf9;
+}
+
+.course-stop:hover {
+    border-color: #e7bc86;
+    box-shadow: 0 15px 40px #d6a5e015;
+}
+
+.stop-number {
+    background: linear-gradient(
+        145deg,
+        #5b4566,
+        #36283e
+    );
+
+    border-color: #c9a57c70;
+    color: #edca9a;
+    box-shadow: 0 4px 0 #1b1424;
+}
+
+.stop-count,
+.stop-arrow {
+    color: #e7bc86;
+}
+
+/* Батырмалар */
+
+.button,
+button {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    background: #30243d;
+    border-color: #594464;
+    color: #f3e6fa;
+    border-radius: 12px;
+}
+
+.button:hover,
+button:hover {
+    color: #ffe1b5;
+    border-color: #e7bc86;
+}
+
+.primary {
+    background: linear-gradient(
+        135deg,
+        #f5d7ac,
+        #c99b66
+    );
+
+    color: #302130;
+    border-color: #ffe3be;
+
+    box-shadow:
+        0 5px 0 #8a633f,
+        0 10px 30px #e7bc8620;
+}
+
+.primary:hover {
+    background: linear-gradient(
+        135deg,
+        #ffe9ca,
+        #d7b07b
+    );
+
+    color: #302130;
+
+    box-shadow:
+        0 7px 0 #8a633f,
+        0 0 35px #e7bc8635;
+}
+
+/* Теория және оқу бөлімдері */
+
+.sheet,
+.bench,
+.theory-card,
+.exercise-rail,
+.search-box,
+.system-panel {
+    background: linear-gradient(
+        145deg,
+        #30243bdf,
+        #201827e8
+    );
+
+    border-color: #51405a;
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+}
+
+.theory-card h3,
+.sheet h3,
+.system-panel h2 {
+    color: #edca9a;
+}
+
+.theory-card p {
+    color: #d1c5dc;
+    font-size: 15px;
+    line-height: 1.95;
+}
+
+.theory-card-number {
+    background: #49364f;
+    color: #edca9a;
+}
+
+.theory-card::before {
+    background: linear-gradient(
+        #e7bc86,
+        #c8a3ef
+    );
+}
+
+.theory-card:hover {
+    border-color: #e7bc86;
+    box-shadow: 0 15px 35px #e7bc8610;
+}
+
+.theory-notice {
+    background: #42313c;
+    color: #f0d9b7;
+    border-color: #88674c;
+}
+
+.system-item {
+    background: #2c2136;
+    border-color: #51405a;
+}
+
+.system-item strong {
+    color: #edca9a;
+}
+
+/* Код редакторы */
+
+pre {
+    background: #130f19 !important;
+    border-color: #51405a;
+    color: #e4c8f9 !important;
+    border-radius: 14px;
+}
+
+input,
+select {
+    background: #1c1525;
+    border-color: #51405a;
+    color: #f6edf9;
+}
+
+/* Төменгі мәзір */
+
+.dock {
+    background: #201828dc;
+    backdrop-filter: blur(25px);
+    border: 1px solid #e7bc8635;
+
+    box-shadow:
+        0 15px 50px #0006,
+        0 0 25px #e7bc860d;
+}
+
+.dock-glyph {
+    color: #e7bc86;
+}
+
+.dock-link[aria-current="page"] {
+    background: linear-gradient(
+        135deg,
+        #f5d7ac,
+        #d1a472
+    );
+
+    color: #302130;
+}
+
+.dock-link[aria-current="page"] .dock-glyph {
+    color: #302130;
+}
+
+.workspace-tabs .workspace-tab[aria-selected="true"],
+.exercise-ribbon [aria-current="page"] {
+    background: #e7bc86;
+    color: #302130;
+    border-color: #e7bc86;
+}
+
+.back-button {
+    background: #30243b;
+    color: #edca9a;
+    border-color: #594464;
+}
+
+.back-icon {
+    background: #49364f;
+    color: #edca9a;
+}
+
+.gauge {
+    background: #44364e;
+}
+
+.gauge i {
+    background: linear-gradient(
+        90deg,
+        #e7bc86,
+        #c8a3ef
+    );
+}
+
+::selection {
+    background: #e7bc86;
+    color: #21192c;
+}
+
+::-webkit-scrollbar-track {
+    background: #17111f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #594464;
+}
+
+/* Анимациялар */
+
+@keyframes luxuryText {
+    to {
+        background-position: 300%;
+    }
+}
+
+@keyframes ambientGlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-100px, 100px) scale(1.2);
+    }
+}
+
+@media (max-width: 760px) {
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .brand {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .course-stop {
+        padding: 15px;
+    }
+
+    .course-stop h2 {
+        font-size: 16px;
+    }
+
+    body::after {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

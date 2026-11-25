@@ -1463,3 +1463,459 @@ render = function () {
 };
 
 render();
+// =========================================
+// MPI SIGNAL PRO — SPACE 3D ENGINE
+// =========================================
+
+(() => {
+
+    // Ғарыштық анимациялық фон
+
+    const canvas = document.createElement('canvas');
+
+    canvas.id = 'spaceBackground';
+
+    canvas.setAttribute('aria-hidden', 'true');
+
+    document.body.prepend(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    const reducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    let width;
+    let height;
+    let stars = [];
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    function resizeSpace() {
+
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        stars = Array.from(
+            { length: width < 760 ? 55 : 130 },
+            () => ({
+
+                x: Math.random() * width,
+
+                y: Math.random() * height,
+
+                radius: Math.random() * 1.8 + .3,
+
+                speed: Math.random() * .35 + .08,
+
+                opacity: Math.random() * .7 + .2,
+
+                phase: Math.random() * Math.PI * 2
+
+            })
+        );
+
+    }
+
+    function drawSpace(time = 0) {
+
+        ctx.clearRect(0, 0, width, height);
+
+        stars.forEach(star => {
+
+            if (!reducedMotion) {
+
+                star.y -= star.speed;
+
+                if (star.y < -5) {
+
+                    star.y = height + 5;
+
+                    star.x = Math.random() * width;
+
+                }
+
+            }
+
+            const glow = reducedMotion
+
+                ? star.opacity
+
+                : star.opacity *
+                  (.7 + .3 * Math.sin(
+                      time / 1000 + star.phase
+                  ));
+
+            ctx.beginPath();
+
+            ctx.arc(
+                star.x + mouseX * star.radius,
+                star.y + mouseY * star.radius,
+                star.radius,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle =
+                `rgba(100,210,255,${glow})`;
+
+            ctx.fill();
+
+        });
+
+        // Жұлдыздар арасындағы байланыстар
+
+        for (let i = 0; i < stars.length; i++) {
+
+            for (let j = i + 1; j < stars.length; j++) {
+
+                const a = stars[i];
+                const b = stars[j];
+
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+
+                const distance = Math.sqrt(
+                    dx * dx + dy * dy
+                );
+
+                if (distance < 95) {
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(
+                        a.x + mouseX * a.radius,
+                        a.y + mouseY * a.radius
+                    );
+
+                    ctx.lineTo(
+                        b.x + mouseX * b.radius,
+                        b.y + mouseY * b.radius
+                    );
+
+                    ctx.strokeStyle =
+                        `rgba(66,217,255,${
+                            .12 * (1 - distance / 95)
+                        })`;
+
+                    ctx.lineWidth = .6;
+
+                    ctx.stroke();
+
+                }
+
+            }
+
+        }
+
+        if (!reducedMotion) {
+
+            requestAnimationFrame(drawSpace);
+
+        }
+
+    }
+
+    window.addEventListener('resize', () => {
+
+        resizeSpace();
+
+        if (reducedMotion) {
+            drawSpace();
+        }
+
+    });
+
+    window.addEventListener('pointermove', e => {
+
+        if (reducedMotion) return;
+
+        mouseX = (e.clientX / width - .5) * 8;
+
+        mouseY = (e.clientY / height - .5) * 8;
+
+    });
+
+    resizeSpace();
+
+    drawSpace();
+
+    // 3D процессорды құрастыру
+
+    function createChip() {
+
+        return `
+
+            <div class="chip-stage">
+
+                <div class="chip-platform">
+
+                    <div class="chip-board"></div>
+
+                    ${Array.from(
+                        { length: 8 },
+                        (_, i) => `
+
+                            <i class="chip-pin"
+                               style="
+                                   left:${10 + i * 10}%;
+                                   top:-5px;
+                                   transform:rotate(90deg);
+                               ">
+                            </i>
+
+                            <i class="chip-pin"
+                               style="
+                                   left:${10 + i * 10}%;
+                                   bottom:-5px;
+                                   transform:rotate(90deg);
+                               ">
+                            </i>
+
+                            <i class="chip-pin"
+                               style="
+                                   top:${10 + i * 10}%;
+                                   left:-12px;
+                               ">
+                            </i>
+
+                            <i class="chip-pin"
+                               style="
+                                   top:${10 + i * 10}%;
+                                   right:-12px;
+                               ">
+                            </i>
+
+                        `
+                    ).join('')}
+
+                    <div class="chip-core">
+
+                        <strong>MPI</strong>
+
+                        <small>PARALLEL CORE</small>
+
+                    </div>
+
+                    ${Array.from(
+                        { length: 8 },
+                        (_, i) => `
+
+                            <i class="chip-particle"
+                               style="
+                                   left:${
+                                       12 + (i % 4) * 24
+                                   }%;
+                                   top:${
+                                       i < 4 ? 12 : 85
+                                   }%;
+                                   animation-delay:${i * .2}s;
+                               ">
+                            </i>
+
+                        `
+                    ).join('')}
+
+                </div>
+
+                <div class="chip-caption">
+
+                    <span>● MPI CORE MODEL</span>
+
+                    <span>VARIANT 03</span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+    // 3D карточкаларды тышқанмен басқару
+
+    function enableSpaceTilt() {
+
+        if (reducedMotion) return;
+
+        document.querySelectorAll(
+            '.course-stop, .metric'
+        ).forEach(card => {
+
+            card.onpointermove = event => {
+
+                if (event.pointerType !== 'mouse') {
+                    return;
+                }
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    (event.clientX - rect.left)
+                    / rect.width;
+
+                const y =
+                    (event.clientY - rect.top)
+                    / rect.height;
+
+                const rx = (y - .5) * -10;
+
+                const ry = (x - .5) * 10;
+
+                card.style.transform = `
+
+                    perspective(1000px)
+
+                    rotateX(${rx}deg)
+
+                    rotateY(${ry}deg)
+
+                    translateY(-5px)
+
+                `;
+
+            };
+
+            card.onpointerleave = () => {
+
+                card.style.transform = '';
+
+            };
+
+        });
+
+    }
+
+    // Ақпараттық жүйе панелі
+
+    function addSystemPanel() {
+
+        const metrics =
+            document.querySelector('.metric-grid');
+
+        if (!metrics) return;
+
+        if (document.getElementById('systemPanel')) {
+            return;
+        }
+
+        const panel = document.createElement('section');
+
+        panel.id = 'systemPanel';
+
+        panel.className = 'system-panel';
+
+        panel.innerHTML = `
+
+            <div class="eyebrow">
+
+                MPI LEARNING SYSTEM / 03
+
+            </div>
+
+            <h2>
+
+                ${t(
+                    'Оқу жүйесінің күйі',
+                    'Состояние учебной системы',
+                    'Learning system status'
+                )}
+
+            </h2>
+
+            <div class="system-grid">
+
+                <div class="system-item">
+
+                    <strong>MPI</strong>
+
+                    <span>
+
+                        ${t(
+                            'Параллельді бағдарламалау',
+                            'Параллельное программирование',
+                            'Parallel programming'
+                        )}
+
+                    </span>
+
+                </div>
+
+                <div class="system-item">
+
+                    <strong>C++</strong>
+
+                    <span>
+
+                        ${t(
+                            'Бағдарламалау тілі',
+                            'Язык программирования',
+                            'Programming language'
+                        )}
+
+                    </span>
+
+                </div>
+
+                <div class="system-item">
+
+                    <strong>${completedCount()} / ${total}</strong>
+
+                    <span>
+
+                        ${t(
+                            'Орындалған тапсырмалар',
+                            'Выполненные задания',
+                            'Completed exercises'
+                        )}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+        metrics.after(panel);
+
+    }
+
+    // Жаңа дизайнды сайтқа қосу
+
+    const previousSpaceRender = render;
+
+    render = function () {
+
+        previousSpaceRender();
+
+        const page =
+            location.hash.slice(1) || 'home';
+
+        if (page === 'home') {
+
+            const network =
+                document.querySelector('.hero-network');
+
+            if (network) {
+
+                network.outerHTML = createChip();
+
+            }
+
+            addSystemPanel();
+
+        }
+
+        enableSpaceTilt();
+
+    };
+
+    render();
+
+})();
